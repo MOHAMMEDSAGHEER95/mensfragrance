@@ -150,7 +150,7 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-if not DEBUG:
+if not IS_LOCAL:
     CLOUDINARY_STORAGE = {
         'CLOUD_NAME': 'dlfmiu5bf',
         'API_KEY': '783449216691476',
