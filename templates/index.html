@@ -48,6 +48,9 @@
         width: 100%;
         height:300px;
       }
+      h3{
+      color:white;
+      }
 
       @media (max-width:360px) {
           .swiper {
@@ -100,6 +103,8 @@
           {% for perfume in perfumes %}
         <div class="swiper-slide">
           <img src="{{perfume.image.url}}" />
+            <h2>{{perfume.cost}}</h2>
+            <h3>{{perfume.brand}}</h3>
         </div>
           {% endfor %}
       </div>
