@@ -23,7 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-)m&%sn@mh57(e_zs@sar5#7p=+%#v*i_kyg#h%2)(-zac%+&!&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'False').lower() == 'TRUE'.lower()
+DEBUG = True
+
+IS_LOCAL = os.environ.get('DEBUG', 'False').lower() == 'TRUE'.lower()
 
 ALLOWED_HOSTS = ['mensfragrance.herokuapp.com', 'localhost']
 
@@ -75,12 +77,26 @@ WSGI_APPLICATION = 'mensfragrance.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if IS_LOCAL:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
     }
-}
+
+else:
+    DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.postgresql_psycopg2',
+                'NAME': os.environ.get('DB_NAME_VAL', 'ec2-54-217-195-234.eu-west-1.compute.amazonaws.com'),
+
+                'USER': os.environ.get('DB_USER_VAL', 'yajcefhduakzqz'),
+                'PASSWORD': os.environ.get('DB_PWD_VAL', '22491ebd207f08d24bdf537b790fab748dbc9ae49937a679c09b1130fa35be8e'),
+                'HOST': os.environ.get('DB_HOST_VAL', 'd5aag2saj0u8kt'),
+                'PORT': 5432,
+            }
+        }
 
 
 # Password validation
