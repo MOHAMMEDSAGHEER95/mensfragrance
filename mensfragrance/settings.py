@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-)m&%sn@mh57(e_zs@sar5#7p=+%#v*i_kyg#h%2)(-zac%+&!&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mensfragrance.herokuapp.com']
 
 
 # Application definition
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'perfumes',
+    'cloudinary'
 ]
 
 MIDDLEWARE = [
@@ -132,3 +133,10 @@ MEDIA_URL = '/media/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dlfmiu5bf',
+    'API_KEY': '783449216691476',
+    'API_SECRET': 'KdvvEZZPAX4uzqlr0MVyaT2AS5c',
+}
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
