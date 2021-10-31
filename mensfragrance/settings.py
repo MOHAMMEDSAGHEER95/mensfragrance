@@ -77,34 +77,27 @@ WSGI_APPLICATION = 'mensfragrance.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# if IS_LOCAL:
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.sqlite3',
-#             'NAME': BASE_DIR / 'db.sqlite3',
-#         }
-#     }
-#
-# else:
-#     DATABASES = {
-#             'default': {
-#                 'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#                 'NAME': os.environ.get('DB_NAME_VAL', 'ec2-54-217-195-234.eu-west-1.compute.amazonaws.com'),
-#
-#                 'USER': os.environ.get('DB_USER_VAL', 'yajcefhduakzqz'),
-#                 'PASSWORD': os.environ.get('DB_PWD_VAL', '22491ebd207f08d24bdf537b790fab748dbc9ae49937a679c09b1130fa35be8e'),
-#                 'HOST': os.environ.get('DB_HOST_VAL', 'd5aag2saj0u8kt'),
-#                 'PORT': 5432,
-#             }
-#         }
-
-DATABASES = {
+if IS_LOCAL:
+    DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': BASE_DIR / 'db.sqlite3',
         }
     }
 
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': os.environ.get('DB_NAME_VAL', 'ec2-54-217-195-234.eu-west-1.compute.amazonaws.com'),
+
+            'USER': os.environ.get('DB_USER_VAL', 'd5aag2saj0u8kt'),
+            'PASSWORD': os.environ.get('DB_PWD_VAL',
+                                       '22491ebd207f08d24bdf537b790fab748dbc9ae49937a679c09b1130fa35be8e'),
+            'HOST': os.environ.get('DB_HOST_VAL', 'yajcefhduakzqz'),
+            'PORT': 5432,
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
