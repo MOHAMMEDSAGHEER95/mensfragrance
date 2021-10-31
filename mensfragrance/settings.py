@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-)m&%sn@mh57(e_zs@sar5#7p=+%#v*i_kyg#h%2)(-zac%+&!&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'False').lower() == 'TRUE'.lower()
 
-ALLOWED_HOSTS = ['mensfragrance.herokuapp.com']
+ALLOWED_HOSTS = ['mensfragrance.herokuapp.com', 'localhost']
 
 
 # Application definition
@@ -134,9 +134,10 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'dlfmiu5bf',
-    'API_KEY': '783449216691476',
-    'API_SECRET': 'KdvvEZZPAX4uzqlr0MVyaT2AS5c',
-}
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+if not DEBUG:
+    CLOUDINARY_STORAGE = {
+        'CLOUD_NAME': 'dlfmiu5bf',
+        'API_KEY': '783449216691476',
+        'API_SECRET': 'KdvvEZZPAX4uzqlr0MVyaT2AS5c',
+    }
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
