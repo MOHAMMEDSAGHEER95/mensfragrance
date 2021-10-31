@@ -87,14 +87,14 @@
 
 						<ol class="carousel-indicators">
 							{% for perfume in perfumes %}
-							<li data-target="#slider-carousel" data-slide-to="{{forloop.counter}}" class="{% if forloop.counter == 0%}active{% endif %}"></li>
+							<li data-target="#slider-carousel" data-slide-to="{{forloop.counter0}}" class="{% if forloop.counter0 == 0%}active{% endif %}"></li>
 							{% endfor %}
 						</ol>
 
 						
 						<div class="carousel-inner">
 							{% for perfume in perfumes %}
-							<div class="item active">
+							<div class="item {% if forloop.counter0 == 0%}active{% endif %}">
 								<div class="col-sm-6">
 									<h1><span>{{perfume.name}}</span> by {{perfume.brand}}</h1>
 									<h2>{{perfume.cost}}</h2>
@@ -108,7 +108,7 @@
 							</div>
 							{% endfor %}
 
-							
+
 						</div>
 						
 						<a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
