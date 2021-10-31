@@ -27,7 +27,7 @@ DEBUG = True
 
 IS_LOCAL = os.environ.get('DEBUG', 'False').lower() == 'TRUE'.lower()
 
-ALLOWED_HOSTS = ['mensfragrance.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['mensfragrance.herokuapp.com', '*']
 
 
 # Application definition
