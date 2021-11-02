@@ -1,4 +1,4 @@
 # mensfragrance
 
 # Demo
-mensfragrance.herokuapp.com/
+http://mensfragrance.herokuapp.com/
